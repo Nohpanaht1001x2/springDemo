@@ -1,0 +1,18 @@
+POST http://localhost:8080/api/student
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "ter",
+  "faculty": {
+    "id":1
+  }
+}
+
+###Separate the code with comment
+POST http://localhost:8080/api/faculty
+Content-Type: application/json
+
+{
+"name": "Engineer"
+}
