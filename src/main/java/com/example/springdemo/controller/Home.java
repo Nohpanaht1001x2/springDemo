@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Home {
 //    private static final Logger log = (Logger) LoggerFactory.getLogger(Home.class);
 
-    @GetMapping("/")
+    @GetMapping("/src/main/resources/static")
     String index(){
 //        log.info("");
         return "Hello World";

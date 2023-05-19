@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/student")
@@ -29,5 +30,14 @@ public class StudentCtrl {
     @GetMapping()
     List<Student> getAll() {
         return studentRepo.findAll();
+    }
+    @GetMapping("{id}")
+    Optional<Student> get(@PathVariable Integer id) {
+        return studentRepo.findById(id);
+    }
+    @DeleteMapping("{id}")
+    void delete(@PathVariable Integer id)
+    {
+        studentRepo.deleteById(id);
     }
 }

@@ -8,6 +8,15 @@ Content-Type: application/json
     "id":1
   }
 }
+###
+POST http://localhost:8080/api/student
+Content-Type: application/json
+
+{
+"id": 1,
+"name": "ter",
+"faculty_id": 1
+}
 
 ###Separate the code with comment
 POST http://localhost:8080/api/faculty
@@ -16,3 +25,22 @@ Content-Type: application/json
 {
 "name": "Engineer"
 }
+###Separate the code with comment
+POST http://localhost:8080/api/student
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Engineer"
+}
+###GET all by default???
+GET http://localhost:8080/api/student
+Accept: application/json
+
+###GET just one with url parameter
+GET http://localhost:8080/api/student/206
+Accept: application/json
+
+###
+DELETE  http://localhost:8080/api/student/104
+Accept: application/json

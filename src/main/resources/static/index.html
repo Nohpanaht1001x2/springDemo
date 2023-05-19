@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="head1a">Post Student</h1>
+    <form id="PostStudent" method="post" action="api/student">
+        <script>
+            const PostStudent = document.getElementById('PostStudent');
+
+            const element = [
+                {type: "text", name: "id"},
+                {type: "text", name: "name"},
+                {type: "text", name: "faculty"}];
+            for (let i = 0; i < 3; i++) {
+                const p = document.createElement('p');
+                p.textContent = element[i].name;
+                const input = document.createElement('input');
+                input.id = element[i].name;
+                input.type = element[i].type;
+                PostStudent.appendChild(p);
+                PostStudent.appendChild(input);
+            }
+        </script>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the form element
+        const form = document.getElementById('PostStudent');
+        // const form = document.querySelector('form');
+
+        // Add an event listener to the form submission
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            // Get the input values
+            const id = parseInt(form.elements['id'].value);
+            const name = form.elements['name'].value;
+            const faculty_id = parseInt(form.elements['faculty'].value);
+            // Create the JSON object
+            // const jsonObject = {id,name}
+            const jsonObject = {id: id, name: name, faculty: {id: faculty_id}};
+
+            // Convert the JSON object to a string
+            const jsonString = JSON.stringify(jsonObject);
+
+            // Send the form data to the server using fetch
+            fetch('http://localhost:8080/api/student', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonString
+            })
+                .then(response => {
+                    // Handle the response from the server if needed
+                    console.log('Form data sent successfully');
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request
+                    console.error('Error sending form data:', error);
+                });
+        });
+    });
+</script>
+<div class="container">
+    <h1 class="head1b">Post Faculty</h1>
+    <form id="PostFaculty" method="post" action="api/student">
+        <script>
+            const PostFaculty = document.getElementById('PostFaculty');
+
+            const element1 = [
+                {type: "text", name: "id"},
+                {type: "text", name: "faculty"}];
+            for (let i = 0; i < 2; i++) {
+                const p = document.createElement('p');
+                p.textContent = element1[i].name;
+                const input = document.createElement('input');
+                input.id = element1[i].name;
+                input.type = element1[i].type;
+                PostFaculty.appendChild(p);
+                PostFaculty.appendChild(input);
+
+            }
+        </script>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the form element
+        const form = document.getElementById('PostFaculty');
+        // const form = document.querySelector('form');
+
+        // Add an event listener to the form submission
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            // Get the input values
+            const faculty_id = parseInt(form.elements['id'].value);
+            const name = form.elements['faculty'].value;
+            // Create the JSON object
+            // const jsonObject = {id,name}
+            const jsonObject = {id: faculty_id, name: name};
+
+            // Convert the JSON object to a string
+            const jsonString = JSON.stringify(jsonObject);
+
+            // Send the form data to the server using fetch
+            fetch('http://localhost:8080/api/faculty', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonString
+            })
+                .then(response => {
+                    // Handle the response from the server if needed
+                    console.log('Form data sent successfully');
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request
+                    console.error('Error sending form data:', error);
+                });
+        });
+    });
+</script>
+</body>
+</html>
